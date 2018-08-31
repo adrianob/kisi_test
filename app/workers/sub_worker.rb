@@ -2,14 +2,10 @@ require "google/cloud/pubsub"
 
 # Listen to subscription messages and forward them to the passed block
 class SubWorker
-   def initialize
-    @adapter = ActiveJob::QueueAdapters.lookup(:pub_sub_queue).new
-   end
-
   def perform(*args)
     Rails.logger.info "Running test worker with args #{args}"
-    topic        = @adapter.pubsub.topic @adapter.pubsub_topic
-    subscription = topic.subscription @adapter.pubsub_subscription
+    topic        = PubSubConnection.pubsub.topic PubSubConnection.pubsub_topic
+    subscription = topic.subscription PubSubConnection.pubsub_subscription
 
     subscriber = subscription.listen do |message|
       message.acknowledge!
