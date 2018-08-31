@@ -14,7 +14,7 @@ class SubWorker
     subscriber = subscription.listen do |message|
       message.acknowledge!
 
-      Rails.logger.info "Listed to message with data: (#{message.data})"
+      Rails.logger.info "Listened to message with data: (#{message.data})"
 
       yield message.data
     end
