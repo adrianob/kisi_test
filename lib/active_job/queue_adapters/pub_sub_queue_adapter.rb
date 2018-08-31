@@ -5,13 +5,15 @@ require "google/cloud/pubsub"
 module ActiveJob
   module QueueAdapters
     class PubSubQueueAdapter
+
+      # job argument must be a hash with a 'job' key
       def enqueue job
         Rails.logger.info "[PubSubQueueAdapter] enqueue job #{job.inspect}"
 
-        message = job.arguments.first.to_json
+        message, = job.arguments
         topic   = PubSubConnection.pubsub.topic PubSubConnection.pubsub_topic
 
-        topic.publish message
+        topic.publish message.to_json
       end
     end
   end

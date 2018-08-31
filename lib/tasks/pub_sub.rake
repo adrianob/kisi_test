@@ -11,10 +11,10 @@ namespace :pub_sub do
 
     worker.perform do |message_data|
       klass_name = JSON.parse(message_data)['job']
-      return if !available_jobs.include? klass_name
+      return unless available_jobs.include? klass_name
 
-      klass = Object.const_get(klass_name)
-      klass.perform_now message_data
+      job_klass = Object.const_get(klass_name)
+      job_klass.perform_now message_data
     end
   end
 
