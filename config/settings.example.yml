@@ -1,0 +1,11 @@
+default: &default
+  project_id: [PROJECT_ID]
+  pubsub_topic: [TOPIC]
+  pubsub_subscription: [SUB]
+  pubsub_credentials_path: [CREDENTIALS_PATH]
+
+development:
+  <<: *default
+
+production:
+  <<: *default

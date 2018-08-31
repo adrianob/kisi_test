@@ -15,5 +15,8 @@ module KisiTest
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
+    config.active_job.queue_adapter = :pub_sub_queue
+    config.x.settings = Rails.application.config_for :settings
   end
 end
