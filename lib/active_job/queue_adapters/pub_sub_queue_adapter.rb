@@ -27,7 +27,7 @@ module ActiveJob
       def enqueue job
         Rails.logger.info "[PubSubQueueAdapter] enqueue job #{job.inspect}"
 
-        message = job.arguments
+        message = job.arguments.first.to_json
         topic   = pubsub.topic pubsub_topic
 
         topic.publish message
