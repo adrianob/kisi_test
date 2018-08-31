@@ -5,6 +5,7 @@ Install by cloning this repository and running `bundle install`.
 ```
 $ git clone git@github.com:adrianob/kisi_test.git
 $ cd kisi_test
+$ bundle install
 ```
 
 Create the `config/settings.yml` file and configure it using you Google Pub/Sub settings(you'll also need to copy your credentials file somewhere inside the repo):
