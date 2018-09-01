@@ -13,7 +13,8 @@ module ActiveJob
         message, = job.arguments
         topic   = PubSubConnection.pubsub.topic PubSubConnection.pubsub_topic
 
-        topic.publish message.to_json
+        topic.publish_async message.to_json
+        topic.async_publisher.stop.wait!
       end
     end
   end
