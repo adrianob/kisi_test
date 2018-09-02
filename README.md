@@ -40,8 +40,9 @@ subscriber = Subscriber.new(['testTopic.testSubscription', 'secondTopic.secondSu
 Each string must be in the `topic.subscription` format.
 
 Running example:
+![image](https://user-images.githubusercontent.com/2192093/44961583-fec90500-aee9-11e8-8dfd-2507d3e2dff6.png)
+![image](https://user-images.githubusercontent.com/2192093/44961586-0b4d5d80-aeea-11e8-9a93-195cd47e0f33.png)
 
-![image](https://user-images.githubusercontent.com/2192093/44931978-f762f980-ad39-11e8-977c-ea132a498bc0.png)
 
-![image](https://user-images.githubusercontent.com/2192093/44932009-15305e80-ad3a-11e8-9296-45b761d67aaf.png)
+
 
