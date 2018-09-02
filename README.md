@@ -15,8 +15,8 @@ $ cp config/settings.example.yml config/settings.yml
 ```
   # Edit the values below
   project_id: [PROJECT_ID]
-  pubsub_topic: [TOPIC]
-  pubsub_subscription: [SUB]
+  default_topic: [TOPIC]
+  default_subscription: [SUB]
   pubsub_credentials_path: [CREDENTIALS_PATH]
 ```
 Start the background job queue:
@@ -27,10 +27,17 @@ Remove `verbose` if you don't want log messages to show on STDOUT.
 
 Now you can enqueue jobs like so:
 ```
-TestJob.perform_later({job: 'TestJob', arg1: 1, arg2: :foo})
+TestJob.perform_later('Hello, World!', 'TestJob', ['firstTopic', 'secondTopic'])
 ```
+Where the first argument is the message to send to the job, the second argument is the name of the job Class, and the third (optional) argument is an array of topics to send the message to.
 
-You need to pass a hash with a `job` key for the listener worker to recognize your job. To create a new job add it to the whitelist on `lib/tasks/pub_sub.rake`.
+To create a new job add it to the whitelist on `lib/tasks/pub_sub.rake`. 
+
+It's also possible to register multiple subscribers by creating a `Subscriber` object like so:
+```
+subscriber = Subscriber.new(['testTopic.testSubscription', 'secondTopic.secondSubscription'])
+```
+Each string must be in the `topic.subscription` format.
 
 Running example:
 
