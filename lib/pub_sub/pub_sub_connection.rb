@@ -10,12 +10,12 @@ class PubSubConnection
        end
     end
 
-    def pubsub_topic(topic = nil)
-      @pubsub_topic ||= topic || Rails.configuration.x.settings['pubsub_topic']
+    def default_topic
+      @default_topic ||= Rails.configuration.x.settings['default_topic']
     end
 
-    def pubsub_subscription(subscription = nil)
-      @pubsub_subscription ||= subscription || Rails.configuration.x.settings['pubsub_subscription']
+    def default_subscription
+      @default_subscription ||= Rails.configuration.x.settings['default_subscription']
     end
   end
 end
