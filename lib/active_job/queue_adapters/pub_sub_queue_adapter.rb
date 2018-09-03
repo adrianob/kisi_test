@@ -10,7 +10,8 @@ module ActiveJob
       def enqueue job
         Rails.logger.info "[PubSubQueueAdapter] enqueue job #{job.inspect}"
 
-        message, job_name, topics = job.arguments
+        message, topics = job.arguments
+        job_name = job.class.to_s
         publisher = Publisher.new(message, job_name, topics)
 
         publisher.publish_to_topics
