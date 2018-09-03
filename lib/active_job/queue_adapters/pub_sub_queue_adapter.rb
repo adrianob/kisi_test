@@ -6,7 +6,7 @@ module ActiveJob
   module QueueAdapters
     class PubSubQueueAdapter
 
-      # job argument must be in this format: message, job_name, topics array
+      # job argument must be in this format: message, topics array
       def enqueue job
         Rails.logger.info "[PubSubQueueAdapter] enqueue job #{job.inspect}"
 
