@@ -27,9 +27,9 @@ Remove `verbose` if you don't want log messages to show on STDOUT.
 
 Now you can enqueue jobs like so:
 ```
-TestJob.perform_later('Hello, World!', 'TestJob', ['firstTopic', 'secondTopic'])
+TestJob.perform_later('Hello, World!', ['firstTopic', 'secondTopic'])
 ```
-Where the first argument is the message to send to the job, the second argument is the name of the job Class, and the third (optional) argument is an array of topics to send the message to.
+Where the first argument is the message to send to the job and the second argument(optional) is an array of topics to send the message to.
 
 To create a new job add it to the whitelist on `lib/tasks/pub_sub.rake`. 
 
@@ -40,8 +40,8 @@ subscriber = Subscriber.new(['testTopic.testSubscription', 'secondTopic.secondSu
 Each string must be in the `topic.subscription` format.
 
 Running example:
-![image](https://user-images.githubusercontent.com/2192093/44961583-fec90500-aee9-11e8-8dfd-2507d3e2dff6.png)
-![image](https://user-images.githubusercontent.com/2192093/44961586-0b4d5d80-aeea-11e8-9a93-195cd47e0f33.png)
+![image](https://user-images.githubusercontent.com/2192093/44982580-c3135700-af4c-11e8-95b7-a50cfb1bf346.png)
+![image](https://user-images.githubusercontent.com/2192093/44982605-d7efea80-af4c-11e8-99b3-a5ad8b78f79b.png)
 
 
 
